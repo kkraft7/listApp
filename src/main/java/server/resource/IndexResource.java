@@ -13,17 +13,16 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import com.codahale.metrics.annotation.Timed;
 import server.ListItemCollectionRepresentation;
-// import com.yammer.metrics.annotation.Timed;
 
 @Path("/")
 public class IndexResource {
-  // private final AtomicLong counter = new AtomicLong();
   private JacksonDBCollection<ListItem, String> collection;
 
   public IndexResource(JacksonDBCollection<ListItem, String> mainList) {
     this.collection = mainList;
   }
 
+/*
   @GET
   @Produces(MediaType.APPLICATION_JSON)
   @Timed
@@ -36,4 +35,5 @@ public class IndexResource {
     }
     return new ListItemCollectionRepresentation(mainList);
   }
+*/
 }

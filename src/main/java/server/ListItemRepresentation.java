@@ -2,7 +2,8 @@ package server;
 
 // http://dropwizard.readthedocs.org/en/latest/manual/core.html
 // In general, we recommend you separate your projects into three Maven modules: project-api, project-client, and project-application
-import com.fasterxml.jackson.annotation.JsonProperty;
+// import com.fasterxml.jackson.annotation.JsonProperty;
+import org.codehaus.jackson.annotate.JsonProperty;
 import org.hibernate.validator.constraints.NotBlank;
 
 // This is a read-only representation of a list item

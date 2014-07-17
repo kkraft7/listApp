@@ -19,9 +19,15 @@ import javax.servlet.DispatcherType;
 import java.util.EnumSet;
 import java.util.HashMap;
 
+// How to set up viewing an individual item as main-list/id? How to specify url/id on the backend?
+// -- Need to define ListItemResource.java?
+// -- Use DB ID or list index to reference individual list items?
+// What is the relationship between backend classes and frontend URLs? More-or-less 1:1?
+// -- I.e. do we need a REST URL endpoint (and/or a client side type) for every server side type?
+// Can we make the transport layer handle "generic" lists?
 // To add a list (after starting the server):
-//   curl -i -X POST -H "Content-Type: application/json" -d '{ "title":"New title", "description":"New list item" }' http://localhost:8080/main-list
-// To see existing lists: curl http://localhost:8080
+//   curl -i -X POST -H "Content-Type: application/json" -d '{ "title":"New title", "description":"New description" }' http://localhost:8080/main-list
+// To see existing lists: curl http://localhost:8080/main-list
 public class ListApplication extends Application<ListConfiguration> {
 
   public static void main(String[] args) throws Exception {
@@ -34,9 +40,7 @@ public class ListApplication extends Application<ListConfiguration> {
   }
 
   @Override
-  public void initialize(Bootstrap<ListConfiguration> bootstrap) {
-
-  }
+  public void initialize(Bootstrap<ListConfiguration> bootstrap) {}
 
   @Override
   public void run(ListConfiguration configuration, Environment environment) throws Exception {
@@ -49,8 +53,9 @@ public class ListApplication extends Application<ListConfiguration> {
     environment.lifecycle().manage( new MongoManager( mongoDb.getMongo() ));
     environment.healthChecks().register( "MongoDB health check", new MongoHealthCheck( mongoDb.getMongo() ));
     // Required for handling CORS error in AngularJS (No 'Access-Control-Allow-Origin' header is present)
-    // Basically I am getting a cross-site scripting error because the client is on port 9000 and the server is on port 8080
+    // Basically I was getting a cross-site scripting error because the client is on port 9000 and the server is on port 8080
     HashMap<String, String> filterParams = new HashMap<>();
+    // Any way to initialize a HashMap in place (define options as a 2D array)?
     filterParams.put( "allowedOrigins", "*" );
     filterParams.put( "allowedHeaders", "X-Requested-With,Content-Type,Accept,Origin" );
     filterParams.put( "allowedMethods", "OPTIONS,GET,PUT,POST,DELETE,HEAD" );

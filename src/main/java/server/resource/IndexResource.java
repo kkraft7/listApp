@@ -16,6 +16,7 @@ import server.ListItemCollectionRepresentation;
 
 @Path("/")
 public class IndexResource {
+  // Add handler code to this once I decide what the root URL should do
   private JacksonDBCollection<ListItem, String> collection;
 
   public IndexResource(JacksonDBCollection<ListItem, String> mainList) {

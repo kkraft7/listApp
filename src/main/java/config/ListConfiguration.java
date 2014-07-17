@@ -16,7 +16,6 @@ public class ListConfiguration extends Configuration {
   @Min(1)
   @Max(65535)  public int mongoPort = 27017;
 
-  // CONSTRUCTOR DOESN'T TAKE THIS! HOW DO I SPECIFY THE DB NAME?!
   @JsonProperty
   @NotEmpty
   public String mongoDbName = "listAppAlphaDb";

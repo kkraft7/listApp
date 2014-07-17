@@ -12,7 +12,6 @@ import java.util.ArrayList;
 
 // This is the domain class for a list item
 public class ListItem {
-
   private String _id;  // Issue making this final?
   @NotBlank
   private String title;
@@ -31,7 +30,6 @@ public class ListItem {
   public ListItem() {}
 
   public ListItem( String title, String description ) {
-    // this._id = _id;
     setTitle( title );
     setDescription( description );
   }

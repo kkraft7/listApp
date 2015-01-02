@@ -1,34 +1,28 @@
 package server;
 
-// http://dropwizard.readthedocs.org/en/latest/manual/core.html
-// In general, we recommend you separate your projects into three Maven modules: project-api, project-client, and project-application
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.URL;
 
-import org.joda.time.*;
+import org.joda.time.DateTime;
 
 import java.util.ArrayList;
 
-// This is the domain class for a list item
+// This is the base class for a list item
 public class ListItem {
   private String _id;  // Issue making this final?
   @NotBlank
   private String title;
   private String description;
-  @URL
-  private String url;
-  private final DateTime created = new DateTime();
+  private ListItem parent = null;
   private ArrayList<ListItem> children = new ArrayList<>();
-  // Categorization tags
-  // Difficulty/Points/Time
-  // Price
-  // Author/Artist, Title/Song, Album
-  // Done, Due Date, Completion Date (for TO-DO items)
+  private final DateTime creationDate = new DateTime();
+  // Categorization tags?
 
   // Required for deserialization
   public ListItem() {}
 
+  // Create additional constructors...
   public ListItem( String title, String description ) {
     setTitle( title );
     setDescription( description );
@@ -60,15 +54,19 @@ public class ListItem {
     this.description = description;
   }
 
-  public String getUrl() {
-    return url;
+  public ListItem getParent() {
+    return parent;
   }
 
-  public void setUrl( String url ) {
-    this.url = url;
+  public void setParent( ListItem newParent ) {
+    parent = newParent;
   }
 
   public void addChild( ListItem child ) {
     children.add( child );
+  }
+
+  public ArrayList<ListItem> getChildren() {
+    return children;
   }
 }

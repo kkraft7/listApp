@@ -19,9 +19,7 @@ import javax.servlet.DispatcherType;
 import java.util.EnumSet;
 import java.util.HashMap;
 
-// How to set up viewing an individual item as main-list/id? How to specify url/id on the backend?
-// -- Need to define ListItemResource.java?
-// -- Use DB ID or list index to reference individual list items?
+// Use DB ID or list index to reference individual list items?
 // What is the relationship between backend classes and frontend URLs? More-or-less 1:1?
 // -- I.e. do we need a REST URL endpoint (and/or a client side type) for every server side type?
 // Can we make the transport layer handle "generic" lists?

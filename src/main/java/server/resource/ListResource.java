@@ -19,7 +19,8 @@ import server.ListItemRepresentation;
 import java.util.ArrayList;
 import java.util.List;
 
-@Path("/main-list")
+// SHOULD I HAVE A PARALLEL HIERARCHY FOR RESOURCES AND REPRESENTATIONS?
+@Path("/main-list") // items, lists
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class ListResource {

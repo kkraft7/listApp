@@ -3,6 +3,8 @@ package server;
 // http://dropwizard.readthedocs.org/en/latest/manual/core.html
 // In general, we recommend you separate your projects into three Maven modules: project-api, project-client, and project-application
 // import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.List;
+
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -13,6 +15,7 @@ public class ListItemRepresentation {
   @NotBlank
   private String title;
   private String description;
+  private List<ListItem> children;
 
   public ListItemRepresentation( ListItem item ) {
     this.id = item.getId();
@@ -35,4 +38,7 @@ public class ListItemRepresentation {
   public String getDescription() {
     return description;
   }
+
+  @JsonProperty
+  public List<ListItem> getChildren() { return children; }
 }

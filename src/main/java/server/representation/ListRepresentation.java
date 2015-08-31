@@ -1,11 +1,13 @@
-package server;
+package server.representation;
+
+import server.ListItem;
 
 import java.util.List;
 
-public class ListItemCollectionRepresentation {
+public class ListRepresentation {
   public List<ListItem> listItems;
 
-  public ListItemCollectionRepresentation(List<ListItem> listItems) {
+  public ListRepresentation(List<ListItem> listItems) {
     this.listItems = listItems;
   }
 

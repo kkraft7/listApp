@@ -1,4 +1,4 @@
-package server;
+package server.mongo;
 
 import com.mongodb.Mongo;
 import io.dropwizard.lifecycle.Managed;

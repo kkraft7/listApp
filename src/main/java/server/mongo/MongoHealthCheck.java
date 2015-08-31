@@ -1,4 +1,4 @@
-package server;
+package server.mongo;
 
 import com.codahale.metrics.health.HealthCheck;
 import com.mongodb.Mongo;

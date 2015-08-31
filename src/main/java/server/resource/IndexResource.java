@@ -1,18 +1,9 @@
 package server.resource;
 
-import net.vz.mongodb.jackson.DBCursor;
 import net.vz.mongodb.jackson.JacksonDBCollection;
 import server.ListItem;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.ws.rs.GET;
 import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
-import com.codahale.metrics.annotation.Timed;
-import server.ListItemCollectionRepresentation;
 
 @Path("/")
 public class IndexResource {

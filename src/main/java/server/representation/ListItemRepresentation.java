@@ -1,4 +1,4 @@
-package server;
+package server.representation;
 
 // http://dropwizard.readthedocs.org/en/latest/manual/core.html
 // In general, we recommend you separate your projects into three Maven modules: project-api, project-client, and project-application
@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.hibernate.validator.constraints.NotBlank;
+import server.ListItem;
 
 // This is a read-only representation of a list item
 public class ListItemRepresentation {
@@ -21,7 +22,10 @@ public class ListItemRepresentation {
     this.id = item.getId();
     this.title = item.getTitle();
     this.description = item.getDescription();
+    this.children = item.getChildren();
   }
+
+  public ListItemRepresentation() {}
 
   // Per Ted let the DB define the object ID
   @JsonProperty
@@ -39,6 +43,7 @@ public class ListItemRepresentation {
     return description;
   }
 
+  // Will have to check for null here (for a leaf item)
   @JsonProperty
   public List<ListItem> getChildren() { return children; }
 }

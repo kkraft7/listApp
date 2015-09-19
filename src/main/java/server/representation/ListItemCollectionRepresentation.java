@@ -1,4 +1,6 @@
-package server;
+package server.representation;
+
+import server.ListItem;
 
 import java.util.List;
 

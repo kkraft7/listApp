@@ -13,8 +13,8 @@ import net.vz.mongodb.jackson.JacksonDBCollection;
 import com.codahale.metrics.annotation.Timed;
 import org.bson.types.ObjectId;
 import server.ListItem;
-import server.ListItemCollectionRepresentation;
-import server.ListItemRepresentation;
+import server.representation.ListItemCollectionRepresentation;
+import server.representation.ListItemRepresentation;
 
 import java.util.ArrayList;
 import java.util.List;

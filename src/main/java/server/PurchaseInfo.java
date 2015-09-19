@@ -12,6 +12,7 @@ public class PurchaseInfo {
   private double price;
   private List<WebLink> vendorLinks = new ArrayList<>();
 
+  // Add regular and no-arg constructor?
   public double getPrice() {
     return price;
   }

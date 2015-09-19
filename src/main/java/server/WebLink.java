@@ -9,6 +9,7 @@ public class WebLink {
   private String linkText;
   private String description;
 
+  // Add regular and no-arg constructor?
   // Return this as a URI and/or String?
   public URL getLink() {
     return link;

@@ -6,6 +6,7 @@ import java.math.BigDecimal;
 public class Price {
   BigDecimal price;
 
+  // Add regular and no-arg constructor?
   public BigDecimal getPrice() {
     return price;
   }
@@ -21,5 +22,4 @@ public class Price {
     int pennies = new BigDecimal( doubleValue - dollars ).setScale( 2, BigDecimal.ROUND_HALF_UP ).intValue();
     setPrice( new BigDecimal( dollars*100 + pennies ));
   }
-
 }

@@ -3,5 +3,7 @@
 # /*.iml
 # maven:
 /target
+**/.idea/workspace.xml
+**/.idea/tasks.xml
 client
 

@@ -11,8 +11,8 @@ import org.eclipse.jetty.servlet.FilterHolder;
 import org.eclipse.jetty.servlets.CrossOriginFilter;
 import server.ListItem;
 import server.resource.IndexResource;
-import server.MongoHealthCheck;
-import server.MongoManager;
+import server.mongo.MongoHealthCheck;
+import server.mongo.MongoManager;
 import server.resource.ListResource;
 
 import javax.servlet.DispatcherType;
@@ -52,8 +52,16 @@ public class ListApplication extends Application<ListConfiguration> {
     environment.healthChecks().register( "MongoDB health check", new MongoHealthCheck( mongoDb.getMongo() ));
     // Required for handling CORS error in AngularJS (No 'Access-Control-Allow-Origin' header is present)
     // Basically I was getting a cross-site scripting error because the client is on port 9000 and the server is on port 8080
-    HashMap<String, String> filterParams = new HashMap<>();
     // Any way to initialize a HashMap in place (define options as a 2D array)?
+    HashMap<String, String> filterParams = new HashMap<>();
+    // Update this to Dropwizard 0.7 per Ted Young's post at http://jitterted.com/tidbits/2014/09/12/cors-for-dropwizard-0-7-x:
+    // Dynamic filter = environment.servlets().addFilter("CORS", CrossOriginFilter.class);
+    // filter.addMappingForUrlPatterns(EnumSet.allOf(DispatcherType.class), true, "/*");
+    // filter.setInitParameter(CrossOriginFilter.ALLOWED_ORIGINS_PARAM, "*");
+    // filter.setInitParameter("allowedHeaders", "Content-Type,Authorization,X-Requested-With,Content-Length,Accept,Origin");
+    // filter.setInitParameter(CrossOriginFilter.ALLOWED_METHODS_PARAM, "GET,PUT,POST,DELETE,OPTIONS");
+    // filter.setInitParameter(CrossOriginFilter.ACCESS_CONTROL_ALLOW_ORIGIN_HEADER, "*");
+    // filter.setInitParameter("allowCredentials", "true");
     filterParams.put( "allowedOrigins", "*" );
     filterParams.put( "allowedHeaders", "X-Requested-With,Content-Type,Accept,Origin" );
     filterParams.put( "allowedMethods", "OPTIONS,GET,PUT,POST,DELETE,HEAD" );

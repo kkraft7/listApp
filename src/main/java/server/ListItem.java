@@ -8,6 +8,10 @@ import org.joda.time.DateTime;
 
 import java.util.ArrayList;
 
+// Per Ted /resource/new is an ANTI-PATTERN
+// Post to /items -> /items/fec4923
+// Create a child of fev4923: -> POST to /items/fec4923 -> items/abc456
+// Use PUT for modify
 // This is the base class for a list item
 public class ListItem {
   private String _id;  // Issue making this final?
@@ -15,17 +19,20 @@ public class ListItem {
   private String title;
   private String description;
   private ListItem parent = null;
-  private ArrayList<ListItem> children = new ArrayList<>();
+  private ArrayList<ListItem> children = null;
   private final DateTime creationDate = new DateTime();
   // Categorization tags?
 
-  // Required for deserialization
-  public ListItem() {}
+  public ListItem() {}  // Required for deserialization
 
-  // Create additional constructors...
   public ListItem( String title, String description ) {
     setTitle( title );
     setDescription( description );
+  }
+
+  public ListItem( String title, String description, ListItem parent ) {
+    this( title, description );
+    setParent( parent );
   }
 
   // Per Ted let the DB define the object ID
@@ -58,11 +65,14 @@ public class ListItem {
     return parent;
   }
 
-  public void setParent( ListItem newParent ) {
-    parent = newParent;
+  public void setParent( ListItem newListParent ) {
+    parent = newListParent;
   }
 
-  public void addChild( ListItem child ) {
+  public void addItem( ListItem child ) {
+    if ( children == null ) {
+      children = new ArrayList<>();
+    }
     children.add( child );
   }
 

@@ -38,10 +38,7 @@ public class ListResource {
   }
   public ListResource() {}
 
-  // WILL THIS WORK?!
-  // Add a new top-level list
-  // /new is an anti-pattern, per Ted
-  @Path("/")
+  // Add a new top-level list (WILL THIS WORK?!)
   @POST
   @Consumes(MediaType.APPLICATION_JSON)
   @Timed
